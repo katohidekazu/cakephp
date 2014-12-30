@@ -39,7 +39,7 @@ class BooksController extends AppController {
             throw new NotFoundException(__('Book not found'));
         }
         
-        if ($this->request->is('post')) {
+        if ($this->request->is(array('post', 'push'))) {
             $this->Book->id = $id;
             if ($this->Book->save($this->request->data)) {
                 $this->Session->setFlash(__('Book stock updated'));
