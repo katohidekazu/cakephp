@@ -21,4 +21,13 @@ create table users (
 	created datetime,
 	modified datetime,
 	primary key(id)
+);
+
+create table books (
+	id varchar(36) not null,
+	name varchar(100),
+	stock int(4),
+	created datetime,
+	modified datetime,
+	primary key(id)
 );	
