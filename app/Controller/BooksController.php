@@ -35,7 +35,7 @@ class BooksController extends AppController {
 
     public function inventory_edit($id) {
         $book = $this->Book->findById($id);
-        if (!book) {
+        if (!$book) {
             throw new NotFoundException(__('Book not found'));
         }
         
