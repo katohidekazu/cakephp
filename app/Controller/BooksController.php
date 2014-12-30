@@ -32,7 +32,7 @@ class BooksController extends AppController {
     public function inventory_stock() {
         $this->set('books', $this->Book->find('all'));
     }
-    
+
     public function inventory_edit($id) {
         $book = $this->Book->findById($id);
         if (!book) {
