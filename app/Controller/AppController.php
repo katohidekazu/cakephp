@@ -51,4 +51,11 @@ class AppController extends Controller {
         ),
         'DebugKit.Toolbar'
     );
+    
+    public function beforeFilter() {
+        parent::beforeFilter();
+        if (!empty($this->request->params['language'])) {
+            Configure::write('Config.language', $this->request->params['language']);
+        }
+    }
 }
