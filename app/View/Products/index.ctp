@@ -1,9 +1,13 @@
 <h2><?php echo __('Products'); ?></h2>
+<div>
+    <?php echo $this->Html->link(__('Add new product'), array('action' => 'add')); ?>
+</div>
 <table>
     <tr>
         <th><?php echo $this->Paginator->sort('id'); ?></th>
         <th><?php echo $this->Paginator->sort('name'); ?></th>
         <th><?php echo $this->Paginator->sort('created'); ?></th>
+        <th><?php echo __('Actions'); ?></th>
     </tr>
     <?php foreach ($products as $product): ?>
     <tr>
@@ -21,6 +25,9 @@
         </td>
         <td>
             <?php echo $this->Time->nice($product['Product']['created']); ?>
+        </td>
+        <td>
+            <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $product['Product']['id'])); ?>
         </td>
     </tr>
     <?php endforeach; ?>
