@@ -4,3 +4,4 @@ $list = Hash::extract($headlines, '{n}.Headline.title');
 echo $this->Html->nestedList($list);
 
 
+debug(Router::url(array('controller' => 'headlines', 'action' => 'listing', 1)));

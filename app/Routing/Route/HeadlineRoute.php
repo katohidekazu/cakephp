@@ -24,5 +24,23 @@ class HeadlineRoute extends CakeRoute {
         }
         return false;
     }
+    
+    public function match($url) {
+        if ($url['controller'] === 'headlines' && $url['action'] === 'listing' && !empty($url[0])) {
+            $headline = ClassRegistry::init('Headline')->find('first', array(
+               'conditions' => array(
+                   'id' => $url[0]
+               ) 
+            ));
+            if (!empty($headline)) {
+                $url['year'] = $headline['Headline']['year'];
+                $url['month'] = $headline['Headline']['month'];
+                unset($url[0]);
+                return parent::match($url);
+            }
+        }
+        
+        return false;
+    }
 
 }
