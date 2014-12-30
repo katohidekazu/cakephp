@@ -30,7 +30,7 @@ class User extends AppModel {
         
         if (isset($this->data[$this->alias]['password'])) {
             $hasher = new SimplePasswordHasher();
-            $this->data[$this->alias]['password'] = $hasher->has($this->data[$this->alias]['password']);
+            $this->data[$this->alias]['password'] = $hasher->hash($this->data[$this->alias]['password']);
         }
         
         return true;
