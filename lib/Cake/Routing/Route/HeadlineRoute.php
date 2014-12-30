@@ -1,12 +1,12 @@
 <?php
-App::uses('CakeRoute', 'Route');
+App::uses('CakeRoute', 'Routing/Route');
 App::uses('ClassRegistry', 'Utility');
 
 class HeadlineRoute extends CakeRoute {
     
     public function parse($url) {
         $params = parent::parse($url);
-        if (empty($paramse)) {
+        if (empty($params)) {
             return false;
         }
         
