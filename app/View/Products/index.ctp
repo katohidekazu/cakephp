@@ -11,7 +11,7 @@
             <?php echo $product['Product']['id']; ?>
         </td>
         <td>
-            <?php //echo $this->Html->link($product['Product']['name'], array(
+            <?php echo $this->Html->link($product['Product']['name'], array(
             'controller' => 'products',
             'action' => 'view'),
             $product['Product']['id']); ?>
