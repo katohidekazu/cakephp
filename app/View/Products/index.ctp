@@ -28,6 +28,8 @@
         </td>
         <td>
             <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $product['Product']['id'])); ?>
+            <?php echo $this->Html->postLink(__('Delete'), array('action' => 'delete', $product['Product']['id']),
+                    array('confirm' => 'Delete this product?')); ?>
         </td>
     </tr>
     <?php endforeach; ?>
