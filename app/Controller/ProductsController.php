@@ -61,4 +61,18 @@ class ProductsController extends AppController {
             $this->request->data = $product;
         }
     }
+    
+    public function delete($id) {
+        if (!$this->request->is('post')) {
+            throw new MethodNotAllowedException();
+        }
+        
+        if ($this->Product->delete($id)) {
+            $this->Session->setFlash(__('Product removed: %s', $id));
+            return $this->redirect(array('action' => 'index'));
+        }
+        
+        $this->Session->setFlash(__('Could not remove product'));
+        return $this->redirect($this->referer());
+    }
 }
