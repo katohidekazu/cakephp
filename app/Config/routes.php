@@ -1,4 +1,5 @@
 <?php
+App::uses('HeadlineRoute', 'Routing/Route');
 /**
  * Routes configuration
  *
@@ -33,6 +34,15 @@
         Router::connect('/:language/:controller/:action/*', array(), array(
             'language' => '[a-zA-Z]{3}',
             'persist' => array('language')
+        ));
+        
+        Router::connect('/:year/:month', array(
+            'controller' => 'headlines',
+            'action' => 'listing'
+        ), array(
+            'year' => '[0-9]{4}',
+            'month' => '[0-1]{0, 1}[0-9]{1}',
+            'routeClass' => 'HeadlineRoute'
         ));
 
 /**
