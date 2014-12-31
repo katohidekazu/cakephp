@@ -44,6 +44,8 @@ App::uses('HeadlineRoute', 'Routing/Route');
             'month' => '[0-1]{0,1}[0-9]{1}',
             'routeClass' => 'HeadlineRoute'
         ));
+        
+        Router::parseExtensions('json');
 
 /**
  * Load all plugin routes. See the CakePlugin documentation on

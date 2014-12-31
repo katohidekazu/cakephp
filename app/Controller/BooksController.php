@@ -9,6 +9,8 @@ App::uses('AppController', 'Controller');
 class BooksController extends AppController {
     public $helpers = array('Html', 'Form');
     
+    public $components = array('RequestHandler');
+    
     public function index() {
         $this->set('books', $this->Book->find('all', array(
             'conditions' => array(
@@ -52,5 +54,18 @@ class BooksController extends AppController {
         } else {
             $this->request->data = $book;
         }
+    }
+    
+    public function listing() {
+        $books = $this->Book->find('all', array(
+            'fields' => array(
+                'name',
+                'stock'
+            )
+        ));
+        $this->set(array(
+            'books' => Hash::extract($books, '{n}.Book'),
+            '_serialize' => array('books')
+        ));
     }
 }
