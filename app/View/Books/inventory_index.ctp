@@ -9,7 +9,7 @@ $this->Html->script('https://code.jquery.com/jquery-2.1.1.min.js', array('block'
         <input id="<?php echo $book['Book']['id']; ?>" name="stock" type="text" value="<?php echo $book['Book']['stock']; ?>" />
         <?php echo $this->Html->scriptBlock(
                 '$("#' . $book['Book']['id'] . '").keyup(function(e) {'
-                . 'if (e.keyCode === 13 {'
+                . 'if (e.keyCode === 13) {'
                 . 'update($(this));'
                 . '});');
         ?>
