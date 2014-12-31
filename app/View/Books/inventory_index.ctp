@@ -11,7 +11,7 @@ $this->Html->script('https://code.jquery.com/jquery-2.1.1.min.js', array('block'
                 '$("#' . $book['Book']['id'] . '").keyup(function(e) {'
                 . 'if (e.keyCode === 13) {'
                 . 'update($(this));'
-                . '});');
+                . '}});');
         ?>
     </li>
     <?php endforeach; ?>
