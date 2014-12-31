@@ -23,7 +23,7 @@ $error = __('Could not update stock');
 $script = <<<JS
     function update(node) {
         var stock = node.val();
-        if (stock === '' || stock.match(/[^\d]+/) {
+        if (stock === '' || stock.match(/[^\d]+/)) {
             node.val('0');
             stock = '0';
         }
