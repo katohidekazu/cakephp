@@ -68,4 +68,31 @@ class BooksController extends AppController {
             '_serialize' => array('books')
         ));
     }
+    
+    public function beforeFilter() {
+        parent::beforeFilter();
+        if ($this->request->is('ajax')) {
+            $this->response->disableCache();
+        }
+    }
+    
+    public function inventory_index() {
+        $this->set('books', $this->Book->find('all'));
+    }
+    
+    public function inventory_update() {
+        $this->request->allowMethod('ajax');
+        
+        if (!$this->request->is('post')
+                || !isset($this->request->data['id'])
+                || !$this->Book->hasAny(array('id' => $this->request->data['id']))
+                || !isset($this->request->data['stock'])
+                || !is_numeric($this->request->data['stock'])) {
+            throw new BadRequestException();
+        }
+        $this->autoRender = false;
+        $this->Book->id = $this->request->data['id'];
+        $this->Book->saveField('stock', $this->request->data['stock']);
+        return true;
+    }
 }
