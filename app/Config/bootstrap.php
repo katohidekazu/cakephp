@@ -96,7 +96,8 @@ CakePlugin::load('DebugKit');
  */
 Configure::write('Dispatcher.filters', array(
 	'AssetDispatcher',
-	'CacheDispatcher'
+	'CacheDispatcher',
+        'ApiDispatcher'
 ));
 
 /**
