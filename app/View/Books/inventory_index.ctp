@@ -3,6 +3,7 @@ $this->Html->script('https://code.jquery.com/jquery-2.1.1.min.js', array('block'
 ?>
 <h2><?php echo __('Books stock'); ?></h2>
 <ul>
+    <?php foreach ($books as $book): ?>
     <li>
         <?php echo h($book['Book']['name']); ?>
         <input id="<?php echo $book['Book']['id']; ?>" name="stock" type="text" value="<?php echo $book['Book']['stock']; ?>" />
@@ -13,6 +14,7 @@ $this->Html->script('https://code.jquery.com/jquery-2.1.1.min.js', array('block'
                 . '});');
         ?>
     </li>
+    <?php endforeach; ?>
 </ul>
 <?php
 $url = $this->Html->url(array('action' => 'update'));
