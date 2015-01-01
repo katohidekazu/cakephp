@@ -9,7 +9,7 @@ App::uses('AppController', 'Controller');
 class PackagesController extends AppController {
     public function debug() {
         debug($this->Package->find('first', array(
-            'contain' => array('Warehouse')
+            'contain' => array('Warehouse', 'Stock')
         )));
         $this->autoRender = false;
     }

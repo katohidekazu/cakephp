@@ -7,19 +7,22 @@ App::uses('AppModel', 'Model');
  * @author HK
  */
 class Warehouse extends AppModel {
-    public $hasAndBelongsToMany = array(
-        'Package' => array(
-            'className' => 'Package',
-            'joinTable' => 'packages_warehouses',
-            'foreignkey' => 'warehouse_id',
-            'associationForeignkey' => 'package_id',
-            'unique' => 'keepExisting',
-            'conditions' => '',
-            'fields' => '',
-            'order' => '',
-            'limit' => '',
-            'offset' => '',
-            'finderQuery' => ''
-        )
+//    public $hasAndBelongsToMany = array(
+//        'Package' => array(
+//            'className' => 'Package',
+//            'joinTable' => 'packages_warehouses',
+//            'foreignkey' => 'warehouse_id',
+//            'associationForeignkey' => 'package_id',
+//            'unique' => 'keepExisting',
+//            'conditions' => '',
+//            'fields' => '',
+//            'order' => '',
+//            'limit' => '',
+//            'offset' => '',
+//            'finderQuery' => ''
+//        )
+//    );
+    public $hasMany = array(
+        'Stock'
     );
 }
