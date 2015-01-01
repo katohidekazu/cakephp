@@ -8,7 +8,7 @@ App::uses('AppController', 'Controller');
  */
 class PackagesController extends AppController {
     public function debug() {
-        debug($this->Packge->find('first', array(
+        debug($this->Package->find('first', array(
             'contain' => array('Warehouse')
         )));
         $this->autoRender = false;
