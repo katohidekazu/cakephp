@@ -13,4 +13,9 @@ class PackagesController extends AppController {
         )));
         $this->autoRender = false;
     }
+    
+    public function latest() {
+        debug($this->Package->find('latest'));
+        $this->_stop();
+    }
 }

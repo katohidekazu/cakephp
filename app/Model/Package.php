@@ -28,4 +28,24 @@ class Package extends AppModel {
     public $hasMany = array(
       'Stock'  
     );
+    
+    public $findMethods = array(
+        'latest' => true
+    );
+    
+    protected function _findLatest($state, $query, $results = array()) {
+        if ($state === 'before') {
+            $query['conditions']['Package.fragile'] = false;
+            $query['order'] = array('Package.created' => 'desc');
+            $query['contain'] = array('Warehouse');
+            return $query;
+        }
+        
+        foreach ($results as &$result) {
+            $warehouseCount = count($result['Warehouse']);
+            $result = Hash::insert($result, 'Package.multiple_warehouses', $warehouseCount > 1);
+        }
+        return $results;
+    }
+            
 }
