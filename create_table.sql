@@ -30,4 +30,37 @@ create table books (
 	created datetime,
 	modified datetime,
 	primary key(id)
-);	
+);
+
+create table packages (
+    id int not null auto_increment,
+    recipient varchar(255) not null,
+    address varchar(255) not null,
+    created datetime,
+    modified datetime,
+    primary key(id)
+);
+
+create table warehouses (
+    id int not null auto_increment,
+    name varchar(255) not null,
+    created datetime,
+    modified datetime,
+    primary key(id)
+);
+
+insert into packages (recipient, address, created, modified)
+    values
+    ('John Doe', 'Sunset Boulevard 1, Los Angeles, CA', now(), now());
+
+insert into warehouses (name, created, modified)
+    values
+    ('Main Warehouse', now(), now()),
+    ('Auxiliar Warehouse', now(), now());
+
+create table package_warehouses (
+    id int not null auto_increment,
+    package_id int not null,
+    warehouse_id int not null,
+    primary key(id)
+);
