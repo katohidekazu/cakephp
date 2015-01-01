@@ -32,6 +32,17 @@ create table books (
 	primary key(id)
 );
 
+create table uploads (
+        id int(11) not null auto_increment,
+        name varchar(100) not null,
+        size int(4) unsigned not null,
+        mime varchar(50) not null,
+        path text not null,
+        created datetime,
+        modified datetime,
+        primary key(id)
+);
+
 create table packages (
     id int not null auto_increment,
     recipient varchar(255) not null,
