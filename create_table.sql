@@ -69,9 +69,18 @@ insert into warehouses (name, created, modified)
     ('Main Warehouse', now(), now()),
     ('Auxiliar Warehouse', now(), now());
 
-create table package_warehouses (
+create table packages_warehouses (
     id int not null auto_increment,
     package_id int not null,
     warehouse_id int not null,
     primary key(id)
 );
+
+insert into packages_warehouses (package_id, warehouse_id)
+    values
+    (1, 1),
+    (1, 2);
+
+alter table packages_warehouses add
+    amount int not null default '0';
+
