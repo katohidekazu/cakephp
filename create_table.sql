@@ -107,4 +107,4 @@ update packages set category_id = '1' where id = 1;
 alter table packages add active tinyint(1) not null default '1';
 alter table warehouses add active tinyint(1) not null default '1';
 
-update packages_warehouses set amount = '1' where id = 1;
+update packages_warehouses set amount = '1' where id = 1

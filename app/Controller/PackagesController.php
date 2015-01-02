@@ -18,4 +18,21 @@ class PackagesController extends AppController {
         debug($this->Package->find('latest'));
         $this->_stop();
     }
+    
+    public function save() {
+        $data = array(
+            'Package' => array(
+                'recipient' => 'John Doe',
+                'address' => 'Sunset Boulevard 1, Los Angeles, CA'
+            ),
+            'Warehouse' => array(
+                array(
+                    'name' => 'Main Warehouse'
+                )
+            )
+        );
+        
+        $this->Package->saveComplexPackages($data);
+        $this->_stop();
+    }
 }

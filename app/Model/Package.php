@@ -47,5 +47,31 @@ class Package extends AppModel {
         }
         return $results;
     }
+    
+    public function saveComplexPackages($data) {
+        $dataSource = $this->getDataSource();
+        
+        try {
+            $dataSource->begin();
+            $this->_complexSave1($data);
+            $this->_complexSave2($data);
+            $dataSource->commit();
+        } catch (Exception $ex) {
+            $dataSource->rollback();
+        }
+    }
+    
+    protected function _complexSave1($data) {
+        $saveResult = $this->saveAssociated($data);
+        if (!$saveResult) {
+            throw new OutOfBoundsException(__('Unable to save %s', __METHOD__));
+        }
+    }
+    
+    protected function _complexSave2($data) {
+        // do another complex save operation
+        
+        return true;
+    }
             
 }
