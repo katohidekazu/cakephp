@@ -107,4 +107,18 @@ update packages set category_id = '1' where id = 1;
 alter table packages add active tinyint(1) not null default '1';
 alter table warehouses add active tinyint(1) not null default '1';
 
-update packages_warehouses set amount = '1' where id = 1
+update packages_warehouses set amount = '1' where id = 1;
+
+insert into packages (recipient, address, created, modified)
+    values
+    ('Recipient 1', 'Sunset Boulevard 1', now(), now()),
+    ('Recipient 2', 'Sunset Boulevard 2', now(), now()),
+    ('Recipient 3', 'Sunset Boulevard 3', now(), now()),
+    ('Recipient 4', 'Sunset Boulevard 4', now(), now()),
+    ('Recipient 5', 'Sunset Boulevard 5', now(), now()),
+    ('Recipient 6', 'Sunset Boulevard 6', now(), now()),
+    ('Recipient 7', 'Sunset Boulevard 7', now(), now()),
+    ('Recipient 8', 'Sunset Boulevard 8', now(), now()),
+    ('Recipient 9', 'Sunset Boulevard 9', now(), now()),
+    ('Recipient 10', 'Sunset Boulevard 10', now(), now()),
+    ('Recipient 11', 'Sunset Boulevard 11', now(), now());

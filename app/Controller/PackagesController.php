@@ -7,6 +7,24 @@ App::uses('AppController', 'Controller');
  * @author HK
  */
 class PackagesController extends AppController {
+    
+    public $components = array('Paginator');
+    
+    public $helpers = array('Paginator');
+    
+    public function index() {
+        $this->Paginator->settings = array(
+            'Package' => array(
+                'paramType' => 'queryString',
+                'limit' => 5,
+                'order' => array(
+                    'Package.recipient' => 'asc'
+                )
+            )
+        );
+        $this->set('packages', $this->Paginator->paginate());
+    }
+    
     public function debug() {
         debug($this->Package->find('first', array(
             'contain' => array('Warehouse', 'Stock')
