@@ -12,6 +12,21 @@ class Category extends AppModel {
         'Package'  
     );
     
+    public $actsAs = array(
+        'Search.Searchable'
+    );
+    
+    public $filterArgs = array(
+        'name' => array(
+            'field' => 'Category.name',
+            'type' => 'like'
+        ),
+        'packages_fragile_count' => array(
+            'field' => 'Category.packages_fragile_count >=',
+            'type' => 'value'
+        )
+    );
+    
     public function getCategoryWarehouses($categoryId) {
         return $this->find('first', array(
             'conditions' => array(
