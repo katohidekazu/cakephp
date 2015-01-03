@@ -30,7 +30,8 @@ class Package extends AppModel {
     );
     
     public $findMethods = array(
-        'latest' => true
+        'latest' => true,
+        'search' => true
     );
     
     protected function _findLatest($state, $query, $results = array()) {
@@ -72,6 +73,21 @@ class Package extends AppModel {
         // do another complex save operation
         
         return true;
+    }
+    
+    protected function _findSearch($state, $query, $results = array()) {
+        if ($state === 'before') {
+            $searchQuery = Hash::get($query, 'searchQuery');
+            $searchConditions = array(
+                'or' => array(
+                    "{$this->alias}.recipient LIKE" => '%' . $searchQuery . '%',
+                    "{$this->alias}.address LIKE" => '%' . $searchQuery . '%'
+                )
+            );
+            $query['conditions'] = array_merge($searchConditions, (array)$query['conditions']);
+            return $query;
+        }
+        return $results;
     }
             
 }

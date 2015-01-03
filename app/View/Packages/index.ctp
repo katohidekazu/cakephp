@@ -1,5 +1,17 @@
 <div class="packages index">
     <h2><?php echo __('Packages'); ?></h2>
+    <?php
+    echo $this->Form->create('Package', array(
+        'action' => 'search'
+    ));
+    if (!isset($searchQuery)) {
+        $searchQuery = '';
+    }
+    echo $this->Form->input('searchQuery', array(
+        'value' => h($searchQuery)
+    ));
+    echo $this->Form->end(__('Search'));
+    ?>
     <table>
         <tr>
             <th><?php echo $this->Paginator->sort('recipient'); ?></th>

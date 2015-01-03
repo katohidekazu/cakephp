@@ -53,5 +53,26 @@ class PackagesController extends AppController {
         $this->Package->saveComplexPackages($data);
         $this->_stop();
     }
+    
+    public function search() {
+        if ($this->request->is('put') || $this->request->is('post')) {
+            return $this->redirect(array(
+               '?' => array(
+                   'q' => $this->request->data('Package.searchQuery')
+               ) 
+            ));
+        }
+        $this->Package->recursive = 0;
+        $searchQuery = $this->request->query('q');
+        $this->Paginator->settings = array(
+            'Package' => array(
+                'findType' => 'search',
+                'searchQuery' => $searchQuery
+            )
+        );
+        $this->set('packages', $this->Paginator->paginate());
+        $this->set('searchQuery', $searchQuery);
+        $this->render('index');
+    }
 
 }
