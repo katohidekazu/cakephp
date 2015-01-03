@@ -1,4 +1,5 @@
 <?php
+
 App::uses('AppController', 'Controller');
 
 /**
@@ -7,15 +8,14 @@ App::uses('AppController', 'Controller');
  * @author HK
  */
 class PackagesController extends AppController {
-    
+
     public $components = array('Paginator');
-    
     public $helpers = array('Paginator');
-    
+
     public function index() {
         $this->Paginator->settings = array(
             'Package' => array(
-                'paramType' => 'queryString',
+                'paramType' => 'querystring',
                 'limit' => 5,
                 'order' => array(
                     'Package.recipient' => 'asc'
@@ -24,19 +24,19 @@ class PackagesController extends AppController {
         );
         $this->set('packages', $this->Paginator->paginate());
     }
-    
+
     public function debug() {
         debug($this->Package->find('first', array(
-            'contain' => array('Warehouse', 'Stock')
+                    'contain' => array('Warehouse', 'Stock')
         )));
         $this->autoRender = false;
     }
-    
+
     public function latest() {
         debug($this->Package->find('latest'));
         $this->_stop();
     }
-    
+
     public function save() {
         $data = array(
             'Package' => array(
@@ -49,8 +49,9 @@ class PackagesController extends AppController {
                 )
             )
         );
-        
+
         $this->Package->saveComplexPackages($data);
         $this->_stop();
     }
+
 }
